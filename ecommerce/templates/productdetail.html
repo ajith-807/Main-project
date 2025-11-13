@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>ABOUT US</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">ABOUT US</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+    <!-- Start About Page  -->
+    <div class="about-box-main">
+        <div class="container">
+            <div class="row">
+				<div class="col-lg-6">
+                    <div class="banner-frame"> <img class="img-fluid" src="{{product.image.url}}" alt="" />
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="noo-sh-title-top"><span>{{product.name}}</span></h2>
+                    <h4>Price:Rs{{product.price}}</h4>
+                    <h4>{% if product.stock > 0 %} Currently {{product.stock}} available{% endif %}</h4>
+                    <h4><b>Short Description</b></h4>
+                    <p>{{product.description}}</p>
+                    <p>{{product.description}}</p>
+
+                    {% if user.is_superuser == True %}
+                        <a class="btn hvr-hover" href="{% url 'shop:addstock' product.id %}">Add stock</a>
+                    {% else %}
+                        {% if product.stock > 0 %}
+                            <a class="btn hvr-hover" href="{% url 'cart:addtocart' product.id %}">Add to cart</a>
+                        {% else %}
+                            <h3>Out of stock</h3>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

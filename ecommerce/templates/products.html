@@ -44,13 +44,12 @@
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                 </ul>
-                                <a class="cart" href="#">Add to Cart</a>
+                                <a class="cart" href="{% url 'shop:productdetail' j.id %}">Details</a>
                             </div>
                         </div>
                         <div class="why-text">
 
                                <h2>{{j.name}}</h2>
-                               <h2>{{j.description}}</h2>
                                 <h2>{{j.price}}</h2>
 
                         </div>

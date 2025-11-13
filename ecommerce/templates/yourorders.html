@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Your orders</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">ABOUT US</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Title Box -->
+<div class="container w-50 p-5 border border-2 shadow mt-5">
+  {% for i in order %}
+<h5>Order no::{{i.order_id}}</h5><br>
+<h5>Order on::{{i.ordered_date}}</h5><br>
+<p>Order total:{{i.amount}}<br></p><br>
+    <p>Delivery status::{{i.delivery_status}}</p>
+<hr>
+{% for j in i.products.all %}
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{j.product.image.url}}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{j.product.name}}</h5>
+        <p class="card-text">{{j.product.price}}</p>
+        <p class="card-text">{{j.quantity}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+    <hr>
+    {% endfor %}
+{% endfor %}
+</div>
+
+{% endblock %}
